@@ -26,7 +26,7 @@ const app = express()
  app.use(notFound)
  app.use(errorHandler)
 
- const PORT = 5000 
+ const PORT = process.env.PORT || 5000 
 
 //  console.log(process.env.SECRET_KEY)
 
