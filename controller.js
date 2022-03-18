@@ -1,7 +1,12 @@
+import path from 'path'
 import Flutterwave from 'flutterwave-node-v3'
 import got from 'got'
+import dotenv from 'dotenv'
 
-const flw = new Flutterwave("FLWPUBK_TEST-e058a54268fee6f2fce4586e2a3c9a01-X", "FLWSECK_TEST-ae60b6988fae934acbf92cdaacb28f99-X");
+const __dirname = path.resolve(path.dirname(''));
+ dotenv.config({path:__dirname + '/.env'})
+
+const flw = new Flutterwave("FLWPUBK_TEST-e058a54268fee6f2fce4586e2a3c9a01-X", process.env.SECRET_KEY);
 
 const ug_mobile_money =  async (req, res) =>{
 
@@ -40,7 +45,7 @@ try {
     
     const response = await got.post("https://api.flutterwave.com/v3/payments", {
         headers: {
-            Authorization: 'Bearer FLWSECK_TEST-ae60b6988fae934acbf92cdaacb28f99-X'
+            Authorization: `Bearer ${process.env.SECRET_KEY}`
         },
         json: {
             tx_ref: "hooli-tx-1920bbtytty",
