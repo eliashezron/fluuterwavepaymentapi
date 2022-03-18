@@ -1,18 +1,18 @@
 import got from 'got';
 
-const getPaymentLink = async(req, res)=>{
+export const getPaymentLink = async(req, res)=>{
     
 }
 
 try {
     const response = await got.post("https://api.flutterwave.com/v3/payments", {
         headers: {
-            Authorization: `Bearer ${process.env.FLW_SECRET_KEY}`
+            Authorization: `Bearer ${process.env.SECRET_KEY}`
         },
         json: {
             tx_ref: "hooli-tx-1920bbtytty",
             amount: "100",
-            currency: "NGN",
+            currency: "UGX",
             redirect_url: "https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc",
             meta: {
                 consumer_id: 23,
